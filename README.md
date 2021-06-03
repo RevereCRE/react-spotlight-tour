@@ -9,7 +9,7 @@
   <br>
   <a href="https://reverecre.github.io/autotutorial">
     Docs
-  </a>&nbsp;<a href="http://localhost:3000/docs/intro">
+  </a>&nbsp;&nbsp;<a href="http://localhost:3000/docs/intro">
     Demo
   </a>
 </p>
