@@ -43,12 +43,12 @@ import { Highlights, useHighlight } from 'react-highlights';
 import { Highlighter } from 'react-highlights/react-highlighter';
 
 function StatusUpdateInput() {
-  const tutorialRef = useHighlight('Update your status');
+  const highlightRef = useHighlight('Update your status');
 
   // ...
 
   return (
-    <div ref={tutorialRef}>
+    <div ref={highlightRef}>
       <textarea />
       <button>Update status</button>
     </div>
