@@ -3,7 +3,7 @@ module.exports = {
   title: 'React Highlights',
   tagline: 'A self-configuring tutorial library for React',
   url: 'https://reverecre.github.io/react-highlights',
-  baseUrl: '/',
+  baseUrl: '/react-highlights/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
