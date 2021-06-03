@@ -40,6 +40,6 @@ function AutoTutorial({ name, seenTutorials, markSeen, Tutorial, children, }) {
         removeConfig,
     }), [configs, addConfig, removeConfig]);
     return (jsx_runtime_1.jsxs(AutoTutorialContext.Provider, Object.assign({ value: autoTutorialContextValue }, { children: [children,
-            !(seenTutorials !== null && seenTutorials !== void 0 ? seenTutorials : []).includes(name) && Tutorial != null && (jsx_runtime_1.jsx(Tutorial, { conf: configs, onClick: closeTutorial }, void 0))] }), void 0));
+            !seenTutorials.includes(name) && Tutorial != null && (jsx_runtime_1.jsx(Tutorial, { conf: configs, onClick: closeTutorial }, void 0))] }), void 0));
 }
 exports.AutoTutorial = AutoTutorial;

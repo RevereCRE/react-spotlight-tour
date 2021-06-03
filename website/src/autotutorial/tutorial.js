@@ -4,7 +4,7 @@ exports.Tutorial = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
 const react_dom_1 = require("react-dom");
-function checkExhaustive(cased) {
+function checkExhaustive(_cased) {
     return undefined;
 }
 function TutorialPortal({ children }) {

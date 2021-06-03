@@ -3,7 +3,7 @@ import type { TutorialProps } from './tutorial';
 export declare function useAutoTutorial(text: string, placement?: 'bottom' | 'left' | 'right' | 'top'): React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 interface AutoTutorialProps {
     name: string;
-    seenTutorials: null | readonly (string | null)[];
+    seenTutorials: readonly string[];
     markSeen: (tutorial: string) => void;
     Tutorial?: ComponentType<TutorialProps>;
 }
