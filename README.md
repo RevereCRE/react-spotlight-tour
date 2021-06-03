@@ -10,6 +10,10 @@
   <a href="https://reverecre.github.io/autotutorial">
     Docs
   </a>
+
+  <a href="http://localhost:3000/docs/intro">
+    Demo
+  </a>
 </p>
 
 ## Features
