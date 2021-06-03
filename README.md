@@ -11,7 +11,7 @@
     Docs
   </a>
 
-&nbsp;&nbsp;
+&nbsp;
 
   <a href="http://localhost:3000/docs/intro">
     Demo
