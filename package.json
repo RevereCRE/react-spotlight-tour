@@ -9,7 +9,7 @@
     "format": "prettier --write .",
     "check": "npm run check:prettier && npm run check:typescript",
     "check:prettier": "prettier --check .",
-    "check:typescript": "tcs --noEmit"
+    "check:typescript": "tsc --noEmit"
   },
   "repository": {
     "type": "git",

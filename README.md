@@ -75,9 +75,7 @@ function HomePage() {
 To test changes locally run:
 
 ```sh
-$ npm run build
-$ npm run clean
-$ cp -r dist website/src/react-highlights
+$ npx tsc --module es2015 --outDir website/src/react-highlights
 ```
 
 You can then see your changes live on the documentation website by running:

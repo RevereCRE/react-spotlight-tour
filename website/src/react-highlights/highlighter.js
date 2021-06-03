@@ -1,16 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Highlighter = void 0;
-const jsx_runtime_1 = require("react/jsx-runtime");
-const react_1 = require("react");
-const react_dom_1 = require("react-dom");
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { memo, useEffect, useLayoutEffect, useRef, useState, } from 'react';
+import { createPortal } from 'react-dom';
 function checkExhaustive(_cased) {
     return undefined;
 }
 function HighlightPortal({ children }) {
-    const outlet = react_1.useRef(null);
-    const [didMount, setDidMount] = react_1.useState(false);
-    react_1.useEffect(() => {
+    const outlet = useRef(null);
+    const [didMount, setDidMount] = useState(false);
+    useEffect(() => {
         let outletDiv = document.getElementById('highlight-outlet');
         if (!outletDiv) {
             outletDiv = document.createElement('div');
@@ -22,7 +19,7 @@ function HighlightPortal({ children }) {
     }, [outlet]);
     if (!didMount)
         return null;
-    return react_dom_1.createPortal(didMount ? children : null, outlet.current);
+    return createPortal(didMount ? children : null, outlet.current);
 }
 // Controls overall size of the highlight.
 const UNIT = 12;
@@ -112,9 +109,9 @@ function getCanvasContext(canvas) {
     return ctx;
 }
 function Highlighter({ configs, onClick }) {
-    const containerRef = react_1.useRef(null);
-    const [canvas, setCanvas] = react_1.useState(null);
-    react_1.useLayoutEffect(() => {
+    const containerRef = useRef(null);
+    const [canvas, setCanvas] = useState(null);
+    useLayoutEffect(() => {
         if (canvas == null) {
             return;
         }
@@ -145,21 +142,21 @@ function Highlighter({ configs, onClick }) {
     const hasEls = configs.some(({ el }) => el != null);
     if (!hasEls)
         return null;
-    return (jsx_runtime_1.jsx(HighlightPortal, { children: jsx_runtime_1.jsxs("div", Object.assign({ ref: containerRef, onClick: onClick, style: {
+    return (_jsx(HighlightPortal, { children: _jsxs("div", Object.assign({ ref: containerRef, onClick: onClick, style: {
                 position: 'absolute',
                 left: 0,
                 top: 0,
                 zIndex: 10,
                 display: 'flex',
                 flexDirection: 'column',
-            } }, { children: [jsx_runtime_1.jsx("canvas", { ref: setCanvas }, void 0),
-                jsx_runtime_1.jsx("div", { style: { backgroundColor: 'black', opacity: 0.7, flex: 1 } }, void 0)] }), void 0) }, void 0));
+            } }, { children: [_jsx("canvas", { ref: setCanvas }, void 0),
+                _jsx("div", { style: { backgroundColor: 'black', opacity: 0.7, flex: 1 } }, void 0)] }), void 0) }, void 0));
 }
-const HighlighterMemo = react_1.memo(Highlighter, (prev, next) => {
+const HighlighterMemo = memo(Highlighter, (prev, next) => {
     if (prev.configs.length !== next.configs.length)
         return false;
     return prev.configs.every((el, i) => el.el === next.configs[i].el &&
         el.text === next.configs[i].text &&
         el.placement === next.configs[i].placement);
 });
-exports.Highlighter = HighlighterMemo;
+export { HighlighterMemo as Highlighter };

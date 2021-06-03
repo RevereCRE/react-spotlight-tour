@@ -1,17 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Highlights = exports.useHighlight = void 0;
-const jsx_runtime_1 = require("react/jsx-runtime");
-const react_1 = require("react");
-const HighlightsContext = react_1.createContext({
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, } from 'react';
+const HighlightsContext = createContext({
     configs: [],
     addConfig: () => { },
     removeConfig: () => { },
 });
-function useHighlight(text, placement) {
-    const [ref, setRef] = react_1.useState(null);
-    const { addConfig, removeConfig } = react_1.useContext(HighlightsContext);
-    react_1.useEffect(() => {
+export function useHighlight(text, placement) {
+    const [ref, setRef] = useState(null);
+    const { addConfig, removeConfig } = useContext(HighlightsContext);
+    useEffect(() => {
         if (ref == null)
             return;
         const config = { el: ref, text, placement };
@@ -22,21 +19,19 @@ function useHighlight(text, placement) {
     }, [addConfig, removeConfig, ref, text, placement]);
     return setRef;
 }
-exports.useHighlight = useHighlight;
-function Highlights({ open, onClose, Highlighter, children, }) {
-    const [configs, setConfigs] = react_1.useState([]);
-    const addConfig = react_1.useCallback((config) => {
+export function Highlights({ open, onClose, Highlighter, children, }) {
+    const [configs, setConfigs] = useState([]);
+    const addConfig = useCallback((config) => {
         setConfigs((prevConfigs) => [...prevConfigs, config]);
     }, []);
-    const removeConfig = react_1.useCallback((config) => {
+    const removeConfig = useCallback((config) => {
         setConfigs((prevConfigs) => prevConfigs.filter((c) => c !== config));
     }, []);
-    const HighlightsContextValue = react_1.useMemo(() => ({
+    const HighlightsContextValue = useMemo(() => ({
         configs,
         addConfig,
         removeConfig,
     }), [configs, addConfig, removeConfig]);
-    return (jsx_runtime_1.jsxs(HighlightsContext.Provider, Object.assign({ value: HighlightsContextValue }, { children: [children,
-            open && Highlighter != null && (jsx_runtime_1.jsx(Highlighter, { configs: configs, onClick: onClose }, void 0))] }), void 0));
+    return (_jsxs(HighlightsContext.Provider, Object.assign({ value: HighlightsContextValue }, { children: [children,
+            open && Highlighter != null && (_jsx(Highlighter, { configs: configs, onClick: onClose }, void 0))] }), void 0));
 }
-exports.Highlights = Highlights;
