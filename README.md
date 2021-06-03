@@ -20,10 +20,21 @@
 
 - Clean and unobtrusive overlay to highlight the important parts of your app
   inspired by [Chardin.js](https://heelhook.github.io/chardin.js/)
+- Lightweight, only depends on React and the tutorial component can be
+  lazy-loaded
 - Uses composable React hooks to build tutorials rather than selectors
 - Unopinionated persistence for seen tutorials
 - Mobile and desktop support
 - Fully typed with TypeScript!
+
+## Getting Started
+
+Autotutorial comes with everything you need built into the npm package, no need
+for integration with bundlers. Install the package with:
+
+```sh
+$ npm install autotutorial
+```
 
 ## Example Usage
 
