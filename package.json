@@ -1,6 +1,6 @@
 {
   "name": "react-highlights",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Self-configuring tutorial library for React",
   "main": "index.js",
   "scripts": {
