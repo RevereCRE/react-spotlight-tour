@@ -8,31 +8,31 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import type { TutorialConfig, TutorialProps } from './tutorial';
+import type { HighlightConfig, HighlighterProps } from './highlighter';
 
-interface AutoTutorialContextValue {
-  configs: TutorialConfig[];
-  addConfig: (config: TutorialConfig) => void;
-  removeConfig: (config: TutorialConfig) => void;
+interface HighlightsContextValue {
+  configs: HighlightConfig[];
+  addConfig: (config: HighlightConfig) => void;
+  removeConfig: (config: HighlightConfig) => void;
 }
 
-const AutoTutorialContext = createContext<AutoTutorialContextValue>({
+const HighlightsContext = createContext<HighlightsContextValue>({
   configs: [],
   addConfig: () => {},
   removeConfig: () => {},
 });
 
-export function useAutoTutorial(
+export function useHighlight(
   text: string,
   placement?: 'bottom' | 'left' | 'right' | 'top'
 ) {
   const [ref, setRef] = useState<HTMLElement | null>(null);
-  const { addConfig, removeConfig } = useContext(AutoTutorialContext);
+  const { addConfig, removeConfig } = useContext(HighlightsContext);
 
   useEffect(() => {
     if (ref == null) return;
 
-    const config: TutorialConfig = { el: ref, text, placement };
+    const config: HighlightConfig = { el: ref, text, placement };
     addConfig(config);
     return () => {
       removeConfig(config);
@@ -42,35 +42,29 @@ export function useAutoTutorial(
   return setRef;
 }
 
-interface AutoTutorialProps {
-  name: string;
-  seenTutorials: readonly string[];
-  markSeen: (tutorial: string) => void;
-  Tutorial?: ComponentType<TutorialProps>;
+interface HighlightsProps {
+  open: boolean;
+  onClose: () => void;
+  Highlighter?: ComponentType<HighlighterProps>;
 }
 
-export function AutoTutorial({
-  name,
-  seenTutorials,
-  markSeen,
-  Tutorial,
+export function Highlights({
+  open,
+  onClose,
+  Highlighter,
   children,
-}: PropsWithChildren<AutoTutorialProps>) {
-  const closeTutorial = useCallback(() => {
-    markSeen(name);
-  }, [markSeen, name]);
+}: PropsWithChildren<HighlightsProps>) {
+  const [configs, setConfigs] = useState<HighlightConfig[]>([]);
 
-  const [configs, setConfigs] = useState<TutorialConfig[]>([]);
-
-  const addConfig = useCallback((config: TutorialConfig) => {
+  const addConfig = useCallback((config: HighlightConfig) => {
     setConfigs((prevConfigs) => [...prevConfigs, config]);
   }, []);
 
-  const removeConfig = useCallback((config: TutorialConfig) => {
+  const removeConfig = useCallback((config: HighlightConfig) => {
     setConfigs((prevConfigs) => prevConfigs.filter((c) => c !== config));
   }, []);
 
-  const autoTutorialContextValue = useMemo(
+  const HighlightsContextValue = useMemo(
     () => ({
       configs,
       addConfig,
@@ -80,11 +74,11 @@ export function AutoTutorial({
   );
 
   return (
-    <AutoTutorialContext.Provider value={autoTutorialContextValue}>
+    <HighlightsContext.Provider value={HighlightsContextValue}>
       {children}
-      {!seenTutorials.includes(name) && Tutorial != null && (
-        <Tutorial conf={configs} onClick={closeTutorial} />
+      {open && Highlighter != null && (
+        <Highlighter configs={configs} onClick={onClose} />
       )}
-    </AutoTutorialContext.Provider>
+    </HighlightsContext.Provider>
   );
 }

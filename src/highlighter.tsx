@@ -12,14 +12,20 @@ function checkExhaustive(_cased: never): asserts _cased is never {
   return undefined;
 }
 
-function TutorialPortal({ children }: PropsWithChildren<unknown>) {
+export interface HighlightConfig {
+  el: HTMLElement | null;
+  text: string;
+  placement?: 'bottom' | 'left' | 'right' | 'top';
+}
+
+function HighlightPortal({ children }: PropsWithChildren<unknown>) {
   const outlet = useRef<HTMLElement | null>(null);
   const [didMount, setDidMount] = useState(false);
   useEffect(() => {
-    let outletDiv = document.getElementById('tutorial-outlet');
+    let outletDiv = document.getElementById('highlight-outlet');
     if (!outletDiv) {
       outletDiv = document.createElement('div');
-      outletDiv.id = 'tutorial-outlet';
+      outletDiv.id = 'highlight-outlet';
       document.body.appendChild(outletDiv);
     }
 
@@ -31,13 +37,7 @@ function TutorialPortal({ children }: PropsWithChildren<unknown>) {
   return createPortal(didMount ? children : null, outlet.current!);
 }
 
-export interface TutorialConfig {
-  el: HTMLElement | null;
-  text: string;
-  placement?: 'bottom' | 'left' | 'right' | 'top';
-}
-
-// Controls overall size of the tutorial.
+// Controls overall size of the highlight.
 const UNIT = 12;
 const UNIT_2 = UNIT * 2;
 const UNIT_3 = UNIT * 3;
@@ -149,7 +149,7 @@ function renderTextRight(
 
 function renderConfig(
   ctx: CanvasRenderingContext2D,
-  { el, text, placement = 'bottom' }: TutorialConfig
+  { el, text, placement = 'bottom' }: HighlightConfig
 ) {
   if (el == null) return;
 
@@ -210,12 +210,12 @@ function getCanvasContext(canvas: HTMLCanvasElement) {
   return ctx;
 }
 
-export interface TutorialProps {
-  conf: TutorialConfig[];
+export interface HighlighterProps {
+  configs: HighlightConfig[];
   onClick?: () => void;
 }
 
-function Tutorial({ conf, onClick }: TutorialProps) {
+function Highlighter({ configs, onClick }: HighlighterProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
 
@@ -224,7 +224,7 @@ function Tutorial({ conf, onClick }: TutorialProps) {
       return;
     }
 
-    function drawTutorial() {
+    function drawHighlight() {
       if (containerRef.current != null) {
         containerRef.current.style.height = `${document.body.scrollHeight}px`;
         containerRef.current.style.width = `${document.body.clientWidth}px`;
@@ -233,29 +233,29 @@ function Tutorial({ conf, onClick }: TutorialProps) {
       const ctx = getCanvasContext(canvas!);
       if (ctx == null) return;
 
-      for (const tutorialConfig of conf) {
-        renderConfig(ctx, tutorialConfig);
+      for (const config of configs) {
+        renderConfig(ctx, config);
       }
     }
 
-    const resizeObserver = new ResizeObserver(drawTutorial);
+    const resizeObserver = new ResizeObserver(drawHighlight);
     resizeObserver.observe(document.body);
-    for (const { el } of conf) {
+    for (const { el } of configs) {
       if (el) resizeObserver.observe(el);
     }
 
-    const drawInitialFrame = requestAnimationFrame(drawTutorial);
+    const drawInitialFrame = requestAnimationFrame(drawHighlight);
     return () => {
       cancelAnimationFrame(drawInitialFrame);
       resizeObserver.disconnect();
     };
-  }, [canvas, conf]);
+  }, [canvas, configs]);
 
-  const hasEls = conf.some(({ el }) => el != null);
+  const hasEls = configs.some(({ el }) => el != null);
   if (!hasEls) return null;
 
   return (
-    <TutorialPortal>
+    <HighlightPortal>
       <div
         ref={containerRef}
         onClick={onClick}
@@ -271,18 +271,18 @@ function Tutorial({ conf, onClick }: TutorialProps) {
         <canvas ref={setCanvas} />
         <div style={{ backgroundColor: 'black', opacity: 0.7, flex: 1 }} />
       </div>
-    </TutorialPortal>
+    </HighlightPortal>
   );
 }
 
-const TutorialMemo = memo(Tutorial, (prev, next) => {
-  if (prev.conf.length !== next.conf.length) return false;
-  return prev.conf.every(
+const HighlighterMemo = memo(Highlighter, (prev, next) => {
+  if (prev.configs.length !== next.configs.length) return false;
+  return prev.configs.every(
     (el, i) =>
-      el.el === next.conf[i].el &&
-      el.text === next.conf[i].text &&
-      el.placement === next.conf[i].placement
+      el.el === next.configs[i].el &&
+      el.text === next.configs[i].text &&
+      el.placement === next.configs[i].placement
   );
 });
 
-export { TutorialMemo as Tutorial };
+export { HighlighterMemo as Highlighter };

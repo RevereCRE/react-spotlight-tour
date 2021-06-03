@@ -6,11 +6,12 @@ export default function HomescreenCodeExample() {
   return (
     <div className={styles.codeBlockContainer}>
       <CodeBlock title="Basic Usage" className="tsx">
-        {`import { AutoTutorial, useAutoTutorial } from 'autotutorial';
-import { Tutorial } from 'autotutorial/tutorial';
+        {`import { useState } from 'react';
+import { Highlights, useHighlight } from 'react-highlights';
+import { Highlighter } from 'react-highlights/react-highlighter';
 
 function StatusUpdateInput() {
-  const tutorialRef = useAutoTutorial('Update your status');
+  const tutorialRef = useHighlight('Update your status');
 
   // ...
 
@@ -23,17 +24,16 @@ function StatusUpdateInput() {
 }
 
 function HomePage() {
-  const [seenTutorials, markSeen] = useSeenTutorials();
+  const [isOpen, setOpen] = useState(false);
 
   return (
-    <AutoTutorial
-      name="docs:v1"
-      seenTutorials={seenTutorials}
-      markSeen={markSeen}
-      Tutorial={Tutorial}
+    <Highlights
+      open={isOpen}
+      onClose={() => setOpen(false)}
+      Highlighter={Highlighter}
     >
       <StatusUpdateInput />
-    </AutoTutorial>
+    </Highlights>
   );
 }`}
       </CodeBlock>

@@ -1,17 +1,17 @@
 import clsx from 'clsx';
 import React from 'react';
-import { useAutoTutorial } from '../autotutorial';
+import { useHighlight } from '../react-highlights';
 import { LT_MEDIUM, useMediaQuery } from '../media_query';
 import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
     title: 'Easy to Integrate',
-    tutorialText: 'Autotutorial makes it easy',
+    tutorialText: 'React Highlights makes it easy',
     Svg: require('../../static/img/undraw_start_building.svg').default,
     description: (
       <>
-        Autotutorial focues on ease of integration. It's just an{' '}
+        React Highlights focues on ease of integration. It's just an{' '}
         <code>npm install</code> away and works with any React framework, no CSS
         required!
       </>
@@ -24,19 +24,19 @@ const FeatureList = [
     description: (
       <>
         Traditional tours and tutorials can overwhelm your users and cause them
-        to drop out halfway through. Autotutorial lets you call attention to
+        to drop out halfway through. React Highlights lets you call attention to
         what matters without all the steps.
       </>
     ),
   },
   {
-    title: 'First-Class React Suppoer',
+    title: 'First-Class React Support',
     tutorialText: 'Overwhelming your users',
     Svg: require('../../static/img/undraw_react.svg').default,
     description: (
       <>
         Other libraries require you to add selectors everywhere and initialize
-        the library manually. Autotutorial gives you easy to use React hooks
+        the library manually. React Highlights gives you easy to use React hooks
         that can be used anywhere in your app!
       </>
     ),
@@ -45,7 +45,7 @@ const FeatureList = [
 
 function Feature({ Svg, title, description, tutorialText }) {
   const isSmall = useMediaQuery(LT_MEDIUM);
-  const titleRef = useAutoTutorial(tutorialText, 'top');
+  const titleRef = useHighlight(tutorialText, 'top');
 
   return (
     <div className={clsx('col col--4')}>

@@ -1,5 +1,5 @@
 {
-  "name": "autotutorial",
+  "name": "react-highlights",
   "version": "1.0.0",
   "description": "Self-configuring tutorial library for React",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RevereCRE/autotutorial.git"
+    "url": "git+https://github.com/RevereCRE/react-highlights.git"
   },
   "keywords": [
     "react",
@@ -23,9 +23,9 @@
   "author": "Ryan Delaney",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RevereCRE/autotutorial/issues"
+    "url": "https://github.com/RevereCRE/react-highlights/issues"
   },
-  "homepage": "https://github.com/RevereCRE/autotutorial#readme",
+  "homepage": "https://github.com/RevereCRE/react-highlights#readme",
   "peerDependencies": {
     "react": "*",
     "react-dom": "*"

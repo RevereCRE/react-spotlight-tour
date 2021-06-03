@@ -6,16 +6,16 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageCodeExample from '../components/HomepageCodeExample';
 import HomepageFeatures from '../components/HomepageFeatures';
-import { AutoTutorial, useAutoTutorial } from '../autotutorial';
-import { Tutorial } from '../autotutorial/tutorial';
+import { Highlights, useHighlight } from '../react-highlights';
+import { Highlighter } from '../react-highlights/highlighter';
 import { useMediaQuery, LT_MEDIUM } from '../media_query';
 
 function HomepageHeader() {
   const isSmall = useMediaQuery(LT_MEDIUM);
-  const headerRef = useAutoTutorial('Tap anywhere to dismiss', 'bottom');
-  const headingRef = useAutoTutorial('This is a demo of', 'left');
-  const subheadingRef = useAutoTutorial("that's pretty awesome", 'right');
-  const buttonRef = useAutoTutorial(
+  const headerRef = useHighlight('Tap anywhere to dismiss', 'bottom');
+  const headingRef = useHighlight('This is a demo of', 'left');
+  const subheadingRef = useHighlight("that's pretty awesome", 'right');
+  const buttonRef = useHighlight(
     'Check out the docs\nor scroll down to\nsee more',
     'bottom'
   );
@@ -51,14 +51,13 @@ function HomepageHeader() {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const [seenTutorials, setSeenTutorials] = useState([]);
+  const [isOpen, setOpen] = useState([]);
 
   return (
-    <AutoTutorial
-      name="docs:v1"
-      seenTutorials={seenTutorials}
-      markSeen={(t) => setSeenTutorials([...seenTutorials, t])}
-      Tutorial={Tutorial}
+    <Highlights
+      open={isOpen}
+      onClose={() => setOpen(false)}
+      Highlighter={Highlighter}
     >
       <Layout
         title={`Hello from ${siteConfig.title}`}
@@ -70,6 +69,6 @@ export default function Home() {
           <HomepageCodeExample />
         </main>
       </Layout>
-    </AutoTutorial>
+    </Highlights>
   );
 }

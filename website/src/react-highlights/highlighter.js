@@ -1,20 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Tutorial = void 0;
+exports.Highlighter = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
 const react_dom_1 = require("react-dom");
 function checkExhaustive(_cased) {
     return undefined;
 }
-function TutorialPortal({ children }) {
+function HighlightPortal({ children }) {
     const outlet = react_1.useRef(null);
     const [didMount, setDidMount] = react_1.useState(false);
     react_1.useEffect(() => {
-        let outletDiv = document.getElementById('tutorial-outlet');
+        let outletDiv = document.getElementById('highlight-outlet');
         if (!outletDiv) {
             outletDiv = document.createElement('div');
-            outletDiv.id = 'tutorial-outlet';
+            outletDiv.id = 'highlight-outlet';
             document.body.appendChild(outletDiv);
         }
         outlet.current = outletDiv;
@@ -24,7 +24,7 @@ function TutorialPortal({ children }) {
         return null;
     return react_dom_1.createPortal(didMount ? children : null, outlet.current);
 }
-// Controls overall size of the tutorial.
+// Controls overall size of the highlight.
 const UNIT = 12;
 const UNIT_2 = UNIT * 2;
 const UNIT_3 = UNIT * 3;
@@ -111,14 +111,14 @@ function getCanvasContext(canvas) {
     ctx.globalAlpha = 1;
     return ctx;
 }
-function Tutorial({ conf, onClick }) {
+function Highlighter({ configs, onClick }) {
     const containerRef = react_1.useRef(null);
     const [canvas, setCanvas] = react_1.useState(null);
     react_1.useLayoutEffect(() => {
         if (canvas == null) {
             return;
         }
-        function drawTutorial() {
+        function drawHighlight() {
             if (containerRef.current != null) {
                 containerRef.current.style.height = `${document.body.scrollHeight}px`;
                 containerRef.current.style.width = `${document.body.clientWidth}px`;
@@ -126,26 +126,26 @@ function Tutorial({ conf, onClick }) {
             const ctx = getCanvasContext(canvas);
             if (ctx == null)
                 return;
-            for (const tutorialConfig of conf) {
-                renderConfig(ctx, tutorialConfig);
+            for (const config of configs) {
+                renderConfig(ctx, config);
             }
         }
-        const resizeObserver = new ResizeObserver(drawTutorial);
+        const resizeObserver = new ResizeObserver(drawHighlight);
         resizeObserver.observe(document.body);
-        for (const { el } of conf) {
+        for (const { el } of configs) {
             if (el)
                 resizeObserver.observe(el);
         }
-        const drawInitialFrame = requestAnimationFrame(drawTutorial);
+        const drawInitialFrame = requestAnimationFrame(drawHighlight);
         return () => {
             cancelAnimationFrame(drawInitialFrame);
             resizeObserver.disconnect();
         };
-    }, [canvas, conf]);
-    const hasEls = conf.some(({ el }) => el != null);
+    }, [canvas, configs]);
+    const hasEls = configs.some(({ el }) => el != null);
     if (!hasEls)
         return null;
-    return (jsx_runtime_1.jsx(TutorialPortal, { children: jsx_runtime_1.jsxs("div", Object.assign({ ref: containerRef, onClick: onClick, style: {
+    return (jsx_runtime_1.jsx(HighlightPortal, { children: jsx_runtime_1.jsxs("div", Object.assign({ ref: containerRef, onClick: onClick, style: {
                 position: 'absolute',
                 left: 0,
                 top: 0,
@@ -155,11 +155,11 @@ function Tutorial({ conf, onClick }) {
             } }, { children: [jsx_runtime_1.jsx("canvas", { ref: setCanvas }, void 0),
                 jsx_runtime_1.jsx("div", { style: { backgroundColor: 'black', opacity: 0.7, flex: 1 } }, void 0)] }), void 0) }, void 0));
 }
-const TutorialMemo = react_1.memo(Tutorial, (prev, next) => {
-    if (prev.conf.length !== next.conf.length)
+const HighlighterMemo = react_1.memo(Highlighter, (prev, next) => {
+    if (prev.configs.length !== next.configs.length)
         return false;
-    return prev.conf.every((el, i) => el.el === next.conf[i].el &&
-        el.text === next.conf[i].text &&
-        el.placement === next.conf[i].placement);
+    return prev.configs.every((el, i) => el.el === next.configs[i].el &&
+        el.text === next.configs[i].text &&
+        el.placement === next.configs[i].placement);
 });
-exports.Tutorial = TutorialMemo;
+exports.Highlighter = HighlighterMemo;
