@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 
-function checkExhaustive(cased: never): asserts cased is never {
+function checkExhaustive(_cased: never): asserts _cased is never {
   return undefined;
 }
 

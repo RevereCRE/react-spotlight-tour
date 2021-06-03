@@ -44,7 +44,7 @@ export function useAutoTutorial(
 
 interface AutoTutorialProps {
   name: string;
-  seenTutorials: null | readonly (string | null)[];
+  seenTutorials: readonly string[];
   markSeen: (tutorial: string) => void;
   Tutorial?: ComponentType<TutorialProps>;
 }
@@ -82,7 +82,7 @@ export function AutoTutorial({
   return (
     <AutoTutorialContext.Provider value={autoTutorialContextValue}>
       {children}
-      {!(seenTutorials ?? []).includes(name) && Tutorial != null && (
+      {!seenTutorials.includes(name) && Tutorial != null && (
         <Tutorial conf={configs} onClick={closeTutorial} />
       )}
     </AutoTutorialContext.Provider>
