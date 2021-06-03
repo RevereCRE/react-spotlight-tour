@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Usage
 
 Let's discover **Docusaurus in less than 5 minutes**.
 
@@ -10,7 +10,8 @@ Let's discover **Docusaurus in less than 5 minutes**.
 
 Get started by **creating a new site**.
 
-Or **try Docusaurus immediately** with **[new.docusaurus.io](https://new.docusaurus.io)**.
+Or **try Docusaurus immediately** with
+**[new.docusaurus.io](https://new.docusaurus.io)**.
 
 ## Generate a new site
 
@@ -32,4 +33,5 @@ npx docusaurus start
 
 Your site starts at `http://localhost:3000`.
 
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+Open `docs/intro.md` and edit some lines: the site **reloads automatically** and
+display your changes.

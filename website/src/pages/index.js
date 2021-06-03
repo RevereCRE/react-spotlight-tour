@@ -4,6 +4,7 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
+import HomepageCodeExample from '../components/HomepageCodeExample';
 import HomepageFeatures from '../components/HomepageFeatures';
 import { AutoTutorial, useAutoTutorial } from '../autotutorial';
 import { Tutorial } from '../autotutorial/tutorial';
@@ -66,6 +67,7 @@ export default function Home() {
         <HomepageHeader />
         <main>
           <HomepageFeatures />
+          <HomepageCodeExample />
         </main>
       </Layout>
     </AutoTutorial>
