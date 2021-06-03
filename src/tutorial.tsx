@@ -187,7 +187,7 @@ function renderConfig(
 function getCanvasContext(canvas: HTMLCanvasElement) {
   const pixelRatio = window.devicePixelRatio ?? 1;
 
-  const height = Math.min(document.body.clientHeight, window.innerHeight * 2);
+  const height = Math.min(document.body.scrollHeight, window.innerHeight * 2);
   const width = Math.min(document.body.clientWidth, window.innerWidth * 2);
 
   canvas.height = height * pixelRatio;
@@ -226,7 +226,7 @@ function Tutorial({ conf, onClick }: TutorialProps) {
 
     function drawTutorial() {
       if (containerRef.current != null) {
-        containerRef.current.style.height = `${document.body.clientHeight}px`;
+        containerRef.current.style.height = `${document.body.scrollHeight}px`;
         containerRef.current.style.width = `${document.body.clientWidth}px`;
       }
 
