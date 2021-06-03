@@ -4,34 +4,18 @@ sidebar_position: 1
 
 # Usage
 
-Let's discover **Docusaurus in less than 5 minutes**.
+This guide will go over installation and basic usage of the library.
 
 ## Getting Started
 
-Get started by **creating a new site**.
+Install React Highlights using npm or your favorite package manager:
 
-Or **try Docusaurus immediately** with
-**[new.docusaurus.io](https://new.docusaurus.io)**.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-npx @docusaurus/init@latest init my-website classic
+```sh
+$ npm install react-highlights
 ```
 
-## Start your site
+and you're ready to roll! There's no external CSS or anything to include.
 
-Run the development server:
+## Your First Highlight
 
-```shell
-cd my-website
-
-npx docusaurus start
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and
-display your changes.
+## Adding More

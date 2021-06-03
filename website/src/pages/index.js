@@ -59,10 +59,7 @@ export default function Home() {
       onClose={() => setOpen(false)}
       Highlighter={Highlighter}
     >
-      <Layout
-        title={`Hello from ${siteConfig.title}`}
-        description="Description will go into a meta tag in <head />"
-      >
+      <Layout description="Description will go into a meta tag in <head />">
         <HomepageHeader />
         <main>
           <HomepageFeatures />
