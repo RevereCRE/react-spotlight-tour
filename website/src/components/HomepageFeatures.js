@@ -6,35 +6,38 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Easy to Integrate',
     tutorialText: 'Autotutorial makes it easy',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('../../static/img/undraw_start_building.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Autotutorial focues on ease of integration. It's just an{' '}
+        <code>npm install</code> away and works with any React framework, no CSS
+        required!
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Create Beautiful Tutorials',
     tutorialText: 'To call attention without',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('../../static/img/undraw_mobile_marketing.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Traditional tours and tutorials can overwhelm your users and cause them
+        to drop out halfway through. Autotutorial lets you call attention to
+        what matters without all the steps.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'First-Class React Suppoer',
     tutorialText: 'Overwhelming your users',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('../../static/img/undraw_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Other libraries require you to add selectors everywhere and initialize
+        the library manually. Autotutorial gives you easy to use React hooks
+        that can be used anywhere in your app!
       </>
     ),
   },
