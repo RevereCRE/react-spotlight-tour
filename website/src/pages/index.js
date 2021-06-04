@@ -12,7 +12,7 @@ import { useMediaQuery, LT_MEDIUM } from '../media_query';
 
 function HomepageHeader() {
   const isSmall = useMediaQuery(LT_MEDIUM);
-  const headerRef = useHighlight('Tap anywhere to dismiss', 'bottom');
+  const headerRef = useHighlight('Tap to dismiss', 'bottom');
   const headingRef = useHighlight('This is a demo of', 'left');
   const subheadingRef = useHighlight("that's pretty awesome", 'right');
   const buttonRef = useHighlight(

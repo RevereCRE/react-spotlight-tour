@@ -7,7 +7,8 @@ import styles from './HomepageFeatures.module.css';
 const FeatureList = [
   {
     title: 'Easy to Integrate',
-    highlightText: 'React Highlights makes it easy',
+    highlightText: 'React Highlights\nmakes it easy',
+    highlightPosition: 'bottom',
     Svg: require('../../static/img/undraw_start_building.svg').default,
     description: (
       <>
@@ -19,7 +20,7 @@ const FeatureList = [
   },
   {
     title: 'Create Beautiful Tutorials',
-    highlightText: 'To call attention without',
+    highlightText: 'To call attention',
     Svg: require('../../static/img/undraw_mobile_marketing.svg').default,
     description: (
       <>
@@ -31,7 +32,7 @@ const FeatureList = [
   },
   {
     title: 'First-Class React Support',
-    highlightText: 'Overwhelming your users',
+    highlightText: 'Without\noverwhelming\nyour users',
     Svg: require('../../static/img/undraw_react.svg').default,
     description: (
       <>
@@ -43,9 +44,15 @@ const FeatureList = [
   },
 ];
 
-function Feature({ Svg, title, description, highlightText }) {
+function Feature({
+  Svg,
+  title,
+  description,
+  highlightText,
+  highlightPosition,
+}) {
   const isSmall = useMediaQuery(LT_MEDIUM);
-  const titleRef = useHighlight(highlightText, 'top');
+  const titleRef = useHighlight(highlightText, highlightPosition ?? 'top');
 
   return (
     <div className={clsx('col col--4')}>

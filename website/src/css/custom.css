@@ -9,6 +9,7 @@
 :root {
   --ifm-color-primary: #fa634c;
   --ifm-code-font-size: 95%;
+  --ifm-z-index-fixed: 20;
 }
 
 .docusaurus-highlight-code-line {
