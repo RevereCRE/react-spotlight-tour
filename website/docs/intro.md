@@ -25,7 +25,7 @@ silently breaks the tour.
 Let's start by adding a tour to a small existing app. Lines added to integrate
 React Spotlight Tour are highlighted in green.
 
-```jsx {4,7,32-36,41}
+```tsx {4,7,32-36,41}
 // feed.js
 function CommentInputBox({ onSubmit }) {
   const [commentText, setCommentText] = useState('');
@@ -110,7 +110,7 @@ behavior but one successfull approach we have seen is:
 
 Example implementation:
 
-```jsx
+```tsx
 function useSpotlightOpenState(name, initialSeenTutorials) {
   const [seenTutorials, setSeenTutorials] = useState(
     initialSeenTutorials ?? []
