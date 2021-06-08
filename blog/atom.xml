@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://reverecre.github.io/react-highlights/blog</id>
-    <title>React Highlights Blog</title>
+    <id>https://reverecre.github.io/react-spotlight-tour/blog</id>
+    <title>React Spotlight Tour Blog</title>
     <updated>2015-10-25T23:29:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://reverecre.github.io/react-highlights/blog"/>
-    <subtitle>React Highlights Blog</subtitle>
-    <icon>https://reverecre.github.io/react-highlights/img/favicon.ico</icon>
+    <link rel="alternate" href="https://reverecre.github.io/react-spotlight-tour/blog"/>
+    <subtitle>React Spotlight Tour Blog</subtitle>
+    <icon>https://reverecre.github.io/react-spotlight-tour/img/favicon.ico</icon>
 </feed>
