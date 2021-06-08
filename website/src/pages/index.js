@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
@@ -52,6 +52,11 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   const [isOpen, setOpen] = useState([]);
+
+  useEffect(() => {
+    // Workaround for https://github.com/facebook/docusaurus/issues/4826
+    document.querySelector('nav').style.zIndex = 20;
+  }, []);
 
   return (
     <SpotlightTour
