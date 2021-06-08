@@ -4,14 +4,14 @@ import { createPortal } from 'react-dom';
 function checkExhaustive(_cased) {
     return undefined;
 }
-function HighlightPortal({ children }) {
+function SpotlightConfig({ children }) {
     const outlet = useRef(null);
     const [didMount, setDidMount] = useState(false);
     useEffect(() => {
-        let outletDiv = document.getElementById('highlight-outlet');
+        let outletDiv = document.getElementById('spotlight-outlet');
         if (!outletDiv) {
             outletDiv = document.createElement('div');
-            outletDiv.id = 'highlight-outlet';
+            outletDiv.id = 'spotlight-outlet';
             document.body.appendChild(outletDiv);
         }
         outlet.current = outletDiv;
@@ -21,7 +21,7 @@ function HighlightPortal({ children }) {
         return null;
     return createPortal(didMount ? children : null, outlet.current);
 }
-// Controls overall size of the highlight.
+// Controls overall size of the spotlight.
 const UNIT = 12;
 const UNIT_2 = UNIT * 2;
 const UNIT_3 = UNIT * 3;
@@ -108,14 +108,14 @@ function getCanvasContext(canvas) {
     ctx.globalAlpha = 1;
     return ctx;
 }
-function Highlighter({ configs, onClick }) {
+function Spotlight({ configs, onClick }) {
     const containerRef = useRef(null);
     const [canvas, setCanvas] = useState(null);
     useLayoutEffect(() => {
         if (canvas == null) {
             return;
         }
-        function drawHighlight() {
+        function drawSpotlight() {
             if (containerRef.current != null) {
                 containerRef.current.style.height = `${document.body.scrollHeight}px`;
                 containerRef.current.style.width = `${document.body.clientWidth}px`;
@@ -127,13 +127,13 @@ function Highlighter({ configs, onClick }) {
                 renderConfig(ctx, config);
             }
         }
-        const resizeObserver = new ResizeObserver(drawHighlight);
+        const resizeObserver = new ResizeObserver(drawSpotlight);
         resizeObserver.observe(document.body);
         for (const { el } of configs) {
             if (el)
                 resizeObserver.observe(el);
         }
-        const drawInitialFrame = requestAnimationFrame(drawHighlight);
+        const drawInitialFrame = requestAnimationFrame(drawSpotlight);
         return () => {
             cancelAnimationFrame(drawInitialFrame);
             resizeObserver.disconnect();
@@ -142,7 +142,7 @@ function Highlighter({ configs, onClick }) {
     const hasEls = configs.some(({ el }) => el != null);
     if (!hasEls)
         return null;
-    return (_jsx(HighlightPortal, { children: _jsxs("div", Object.assign({ ref: containerRef, onClick: onClick, style: {
+    return (_jsx(SpotlightConfig, { children: _jsxs("div", Object.assign({ ref: containerRef, onClick: onClick, style: {
                 position: 'absolute',
                 left: 0,
                 top: 0,
@@ -152,11 +152,11 @@ function Highlighter({ configs, onClick }) {
             } }, { children: [_jsx("canvas", { ref: setCanvas }, void 0),
                 _jsx("div", { style: { backgroundColor: 'black', opacity: 0.7, flex: 1 } }, void 0)] }), void 0) }, void 0));
 }
-const HighlighterMemo = memo(Highlighter, (prev, next) => {
+const SpotlightMemo = memo(Spotlight, (prev, next) => {
     if (prev.configs.length !== next.configs.length)
         return false;
     return prev.configs.every((el, i) => el.el === next.configs[i].el &&
         el.text === next.configs[i].text &&
         el.placement === next.configs[i].placement);
 });
-export { HighlighterMemo as Highlighter };
+export { SpotlightMemo as Spotlight };

@@ -1,17 +1,17 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'React Highlights',
-  tagline: 'A self-configuring tutorial library for React',
-  url: 'https://reverecre.github.io/react-highlights',
-  baseUrl: '/react-highlights/',
+  title: 'React Spotlight Tour',
+  tagline: 'Self-configuring product tour library for React',
+  url: 'https://reverecre.github.io/react-spotlight-tour',
+  baseUrl: '/react-spotlight-tour/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'RevereCRE', // Usually your GitHub org/user name.
-  projectName: 'react-highlights', // Usually your repo name.
+  projectName: 'react-spotlight-tour', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'React Highlights',
+      title: 'React Spotlight Tour',
       items: [
         {
           type: 'doc',
@@ -20,7 +20,7 @@ module.exports = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/RevereCRE/react-highlights',
+          href: 'https://github.com/RevereCRE/react-spotlight-tour',
           label: 'GitHub',
           position: 'right',
         },
@@ -38,12 +38,12 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/RevereCRE/react-highlights/edit/main/website/',
+            'https://github.com/RevereCRE/react-spotlight-tour/edit/main/website/',
         },
         blog: {
           showReadingTime: true,
           editUrl:
-            'https://github.com/RevereCRE/react-highlights/edit/main/website/blog/',
+            'https://github.com/RevereCRE/react-spotlight-tour/edit/main/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

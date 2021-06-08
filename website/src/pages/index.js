@@ -6,16 +6,16 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageCodeExample from '../components/HomepageCodeExample';
 import HomepageFeatures from '../components/HomepageFeatures';
-import { Highlights, useHighlight } from '../react-highlights';
-import { Highlighter } from '../react-highlights/highlighter';
+import { SpotlightTour, useSpotlight } from '../react-spotlight-tour';
+import { Spotlight } from '../react-spotlight-tour/spotlight';
 import { useMediaQuery, LT_MEDIUM } from '../media_query';
 
 function HomepageHeader() {
   const isSmall = useMediaQuery(LT_MEDIUM);
-  const headerRef = useHighlight('Tap to dismiss', 'bottom');
-  const headingRef = useHighlight('This is a demo of', 'left');
-  const subheadingRef = useHighlight("that's pretty awesome", 'right');
-  const buttonRef = useHighlight(
+  const headerRef = useSpotlight('Tap to dismiss', 'bottom');
+  const headingRef = useSpotlight('This is a demo of', 'left');
+  const subheadingRef = useSpotlight("that's pretty awesome", 'right');
+  const buttonRef = useSpotlight(
     'Check out the docs\nor scroll down to\nsee more',
     'bottom'
   );
@@ -54,10 +54,10 @@ export default function Home() {
   const [isOpen, setOpen] = useState([]);
 
   return (
-    <Highlights
+    <SpotlightTour
       open={isOpen}
       onClose={() => setOpen(false)}
-      Highlighter={Highlighter}
+      Spotlight={Spotlight}
     >
       <Layout description="Description will go into a meta tag in <head />">
         <HomepageHeader />
@@ -66,6 +66,6 @@ export default function Home() {
           <HomepageCodeExample />
         </main>
       </Layout>
-    </Highlights>
+    </SpotlightTour>
   );
 }

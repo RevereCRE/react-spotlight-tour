@@ -8,31 +8,31 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import type { HighlightConfig, HighlighterProps } from './highlighter';
+import type { SpotlightConfig, SpotlightProps } from './spotlight';
 
-interface HighlightsContextValue {
-  configs: HighlightConfig[];
-  addConfig: (config: HighlightConfig) => void;
-  removeConfig: (config: HighlightConfig) => void;
+interface SpotlightTourContextValue {
+  configs: SpotlightConfig[];
+  addConfig: (config: SpotlightConfig) => void;
+  removeConfig: (config: SpotlightConfig) => void;
 }
 
-const HighlightsContext = createContext<HighlightsContextValue>({
+const SpotlightTourContext = createContext<SpotlightTourContextValue>({
   configs: [],
   addConfig: () => {},
   removeConfig: () => {},
 });
 
-export function useHighlight(
+export function useSpotlight(
   text: string,
   placement?: 'bottom' | 'left' | 'right' | 'top'
 ) {
   const [ref, setRef] = useState<HTMLElement | null>(null);
-  const { addConfig, removeConfig } = useContext(HighlightsContext);
+  const { addConfig, removeConfig } = useContext(SpotlightTourContext);
 
   useEffect(() => {
     if (ref == null) return;
 
-    const config: HighlightConfig = { el: ref, text, placement };
+    const config: SpotlightConfig = { el: ref, text, placement };
     addConfig(config);
     return () => {
       removeConfig(config);
@@ -42,29 +42,29 @@ export function useHighlight(
   return setRef;
 }
 
-interface HighlightsProps {
+interface SpotlightTourProps {
   open: boolean;
   onClose: () => void;
-  Highlighter?: ComponentType<HighlighterProps>;
+  Spotlight?: ComponentType<SpotlightProps>;
 }
 
-export function Highlights({
+export function SpotlightTour({
   open,
   onClose,
-  Highlighter,
+  Spotlight,
   children,
-}: PropsWithChildren<HighlightsProps>) {
-  const [configs, setConfigs] = useState<HighlightConfig[]>([]);
+}: PropsWithChildren<SpotlightTourProps>) {
+  const [configs, setConfigs] = useState<SpotlightConfig[]>([]);
 
-  const addConfig = useCallback((config: HighlightConfig) => {
+  const addConfig = useCallback((config: SpotlightConfig) => {
     setConfigs((prevConfigs) => [...prevConfigs, config]);
   }, []);
 
-  const removeConfig = useCallback((config: HighlightConfig) => {
+  const removeConfig = useCallback((config: SpotlightConfig) => {
     setConfigs((prevConfigs) => prevConfigs.filter((c) => c !== config));
   }, []);
 
-  const HighlightsContextValue = useMemo(
+  const spotlightContextValue = useMemo(
     () => ({
       configs,
       addConfig,
@@ -74,11 +74,11 @@ export function Highlights({
   );
 
   return (
-    <HighlightsContext.Provider value={HighlightsContextValue}>
+    <SpotlightTourContext.Provider value={spotlightContextValue}>
       {children}
-      {open && Highlighter != null && (
-        <Highlighter configs={configs} onClick={onClose} />
+      {open && Spotlight != null && (
+        <Spotlight configs={configs} onClick={onClose} />
       )}
-    </HighlightsContext.Provider>
+    </SpotlightTourContext.Provider>
   );
 }

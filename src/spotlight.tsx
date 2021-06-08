@@ -12,20 +12,20 @@ function checkExhaustive(_cased: never): asserts _cased is never {
   return undefined;
 }
 
-export interface HighlightConfig {
+export interface SpotlightConfig {
   el: HTMLElement | null;
   text: string;
   placement?: 'bottom' | 'left' | 'right' | 'top';
 }
 
-function HighlightPortal({ children }: PropsWithChildren<unknown>) {
+function SpotlightConfig({ children }: PropsWithChildren<unknown>) {
   const outlet = useRef<HTMLElement | null>(null);
   const [didMount, setDidMount] = useState(false);
   useEffect(() => {
-    let outletDiv = document.getElementById('highlight-outlet');
+    let outletDiv = document.getElementById('spotlight-outlet');
     if (!outletDiv) {
       outletDiv = document.createElement('div');
-      outletDiv.id = 'highlight-outlet';
+      outletDiv.id = 'spotlight-outlet';
       document.body.appendChild(outletDiv);
     }
 
@@ -37,7 +37,7 @@ function HighlightPortal({ children }: PropsWithChildren<unknown>) {
   return createPortal(didMount ? children : null, outlet.current!);
 }
 
-// Controls overall size of the highlight.
+// Controls overall size of the spotlight.
 const UNIT = 12;
 const UNIT_2 = UNIT * 2;
 const UNIT_3 = UNIT * 3;
@@ -149,7 +149,7 @@ function renderTextRight(
 
 function renderConfig(
   ctx: CanvasRenderingContext2D,
-  { el, text, placement = 'bottom' }: HighlightConfig
+  { el, text, placement = 'bottom' }: SpotlightConfig
 ) {
   if (el == null) return;
 
@@ -210,12 +210,12 @@ function getCanvasContext(canvas: HTMLCanvasElement) {
   return ctx;
 }
 
-export interface HighlighterProps {
-  configs: HighlightConfig[];
+export interface SpotlightProps {
+  configs: SpotlightConfig[];
   onClick?: () => void;
 }
 
-function Highlighter({ configs, onClick }: HighlighterProps) {
+function Spotlight({ configs, onClick }: SpotlightProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
 
@@ -224,7 +224,7 @@ function Highlighter({ configs, onClick }: HighlighterProps) {
       return;
     }
 
-    function drawHighlight() {
+    function drawSpotlight() {
       if (containerRef.current != null) {
         containerRef.current.style.height = `${document.body.scrollHeight}px`;
         containerRef.current.style.width = `${document.body.clientWidth}px`;
@@ -238,13 +238,13 @@ function Highlighter({ configs, onClick }: HighlighterProps) {
       }
     }
 
-    const resizeObserver = new ResizeObserver(drawHighlight);
+    const resizeObserver = new ResizeObserver(drawSpotlight);
     resizeObserver.observe(document.body);
     for (const { el } of configs) {
       if (el) resizeObserver.observe(el);
     }
 
-    const drawInitialFrame = requestAnimationFrame(drawHighlight);
+    const drawInitialFrame = requestAnimationFrame(drawSpotlight);
     return () => {
       cancelAnimationFrame(drawInitialFrame);
       resizeObserver.disconnect();
@@ -255,7 +255,7 @@ function Highlighter({ configs, onClick }: HighlighterProps) {
   if (!hasEls) return null;
 
   return (
-    <HighlightPortal>
+    <SpotlightConfig>
       <div
         ref={containerRef}
         onClick={onClick}
@@ -271,11 +271,11 @@ function Highlighter({ configs, onClick }: HighlighterProps) {
         <canvas ref={setCanvas} />
         <div style={{ backgroundColor: 'black', opacity: 0.7, flex: 1 }} />
       </div>
-    </HighlightPortal>
+    </SpotlightConfig>
   );
 }
 
-const HighlighterMemo = memo(Highlighter, (prev, next) => {
+const SpotlightMemo = memo(Spotlight, (prev, next) => {
   if (prev.configs.length !== next.configs.length) return false;
   return prev.configs.every(
     (el, i) =>
@@ -285,4 +285,4 @@ const HighlighterMemo = memo(Highlighter, (prev, next) => {
   );
 });
 
-export { HighlighterMemo as Highlighter };
+export { SpotlightMemo as Spotlight };

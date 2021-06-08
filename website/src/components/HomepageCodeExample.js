@@ -7,16 +7,16 @@ export default function HomescreenCodeExample() {
     <div className={styles.codeBlockContainer}>
       <CodeBlock title="Basic Usage" className="tsx">
         {`import { useState } from 'react';
-import { Highlights, useHighlight } from 'react-highlights';
-import { Highlighter } from 'react-highlights/react-highlighter';
+import { SpotlightTour, useSpotlight } from 'react-spotlight-tour';
+import { Spotlight } from 'react-spotlight-tour/spotlight';
 
 function StatusUpdateInput() {
-  const highlightRef = useHighlight('Update your status');
+  const spotlightRef = useSpotlight('Update your status');
 
   // ...
 
   return (
-    <div ref={highlightRef}>
+    <div ref={spotlightRef}>
       <textarea />
       <button>Update status</button>
     </div>
@@ -27,13 +27,13 @@ function HomePage() {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <Highlights
+    <SpotlightTour
       open={isOpen}
       onClose={() => setOpen(false)}
-      Highlighter={Highlighter}
+      Spotlight={HighlSpotlightghter}
     >
       <StatusUpdateInput />
-    </Highlights>
+    </SpotlightTour>
   );
 }`}
       </CodeBlock>

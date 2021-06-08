@@ -1,18 +1,18 @@
 import clsx from 'clsx';
 import React from 'react';
-import { useHighlight } from '../react-highlights';
+import { useSpotlight } from '../react-spotlight-tour';
 import { LT_MEDIUM, useMediaQuery } from '../media_query';
 import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
     title: 'Easy to Integrate',
-    highlightText: 'React Highlights\nmakes it easy',
-    highlightPosition: 'bottom',
+    spotlightText: 'Spotlight tours\nmake it easy',
+    spotlightPosition: 'bottom',
     Svg: require('../../static/img/undraw_start_building.svg').default,
     description: (
       <>
-        React Highlights focues on ease of integration. It's just an{' '}
+        React Spotlight Tour focues on ease of integration. It's just an{' '}
         <code>npm install</code> away and works with any React framework, no CSS
         required!
       </>
@@ -20,25 +20,25 @@ const FeatureList = [
   },
   {
     title: 'Create Beautiful Tutorials',
-    highlightText: 'To call attention',
+    spotlightText: 'To call attention',
     Svg: require('../../static/img/undraw_mobile_marketing.svg').default,
     description: (
       <>
         Traditional tours and tutorials can overwhelm your users and cause them
-        to drop out halfway through. React Highlights lets you call attention to
-        what matters without all the steps.
+        to drop out halfway through. React Spotlight Tour lets you call
+        attention to what matters without all the steps.
       </>
     ),
   },
   {
     title: 'First-Class React Support',
-    highlightText: 'Without\noverwhelming\nyour users',
+    spotlightText: 'Without\noverwhelming\nyour users',
     Svg: require('../../static/img/undraw_react.svg').default,
     description: (
       <>
         Other libraries require you to add selectors everywhere and initialize
-        the library manually. React Highlights gives you easy to use React hooks
-        that can be used anywhere in your app!
+        the library manually. React Spotlight Tour gives you easy to use React
+        hooks that can be used anywhere in your app!
       </>
     ),
   },
@@ -48,11 +48,11 @@ function Feature({
   Svg,
   title,
   description,
-  highlightText,
-  highlightPosition,
+  spotlightText,
+  spotlightPosition,
 }) {
   const isSmall = useMediaQuery(LT_MEDIUM);
-  const titleRef = useHighlight(highlightText, highlightPosition ?? 'top');
+  const titleRef = useSpotlight(spotlightText, spotlightPosition ?? 'top');
 
   return (
     <div className={clsx('col col--4')}>

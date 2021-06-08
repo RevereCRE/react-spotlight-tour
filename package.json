@@ -1,7 +1,7 @@
 {
-  "name": "react-highlights",
+  "name": "react-spotlight-tour",
   "version": "1.0.1",
-  "description": "Self-configuring tutorial library for React",
+  "description": "Self-configuring product tour library for React",
   "main": "index.js",
   "scripts": {
     "build": "tsc && cp -r dist/* .",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RevereCRE/react-highlights.git"
+    "url": "git+https://github.com/RevereCRE/react-spotlight-tour.git"
   },
   "keywords": [
     "react",
@@ -23,9 +23,9 @@
   "author": "Ryan Delaney",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RevereCRE/react-highlights/issues"
+    "url": "https://github.com/RevereCRE/react-spotlight-tour/issues"
   },
-  "homepage": "https://github.com/RevereCRE/react-highlights#readme",
+  "homepage": "https://github.com/RevereCRE/react-spotlight-tour#readme",
   "peerDependencies": {
     "react": "*",
     "react-dom": "*"
