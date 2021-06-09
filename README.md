@@ -64,7 +64,7 @@ function HomePage() {
     <SpotlightTour
       open={isOpen}
       onClose={() => setOpen(false)}
-      Spotlight={HighlSpotlightghter}
+      Spotlight={Spotlight}
     >
       <StatusUpdateInput />
     </SpotlightTour>
