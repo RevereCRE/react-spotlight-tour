@@ -7,7 +7,7 @@
 <p align="center">
   A self-configuring tutorial library for React.
   <br>
-  <a href="https://eng.reverecre.com/blog/react-spotlight-tour">
+  <a href="https://eng.reverecre.com/blog/product-tours-with-react">
     Blog
   </a>&nbsp;|&nbsp;<a href="https://reverecre.github.io/react-spotlight-tour">
     Docs
