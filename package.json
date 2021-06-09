@@ -1,6 +1,6 @@
 {
   "name": "react-spotlight-tour",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Self-configuring product tour library for React",
   "main": "index.js",
   "scripts": {
