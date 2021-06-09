@@ -7,11 +7,13 @@
 <p align="center">
   A self-configuring tutorial library for React.
   <br>
-  <a href="https://reverecre.github.io/react-spotlight-tour">
+  <a href="https://eng.reverecre.com/blog/react-spotlight-tour">
+    Blog
+  </a>&nbsp;|&nbsp;<a href="https://reverecre.github.io/react-spotlight-tour">
     Docs
-  </a>&nbsp;&nbsp;<a href="https://reverecre.github.io/react-spotlight-tour/demo">
+  </a>&nbsp;|&nbsp;<a href="https://reverecre.github.io/react-spotlight-tour/demo">
     Demo
-  </a>&nbsp;&nbsp;<a href="https://www.npmjs.com/package/react-spotlight-tour">
+  </a>&nbsp;|&nbsp;<a href="https://www.npmjs.com/package/react-spotlight-tour">
     npm
   </a>
 </p>

@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { SpotlightTour, useSpotlight } from '../react-spotlight-tour';
 import Spotlight from '../react-spotlight-tour/spotlight';
+import { useMediaQuery, LT_MEDIUM } from '../media_query';
 
 function CommentInputBox({ onSubmit }) {
   const [commentText, setCommentText] = useState('');
-  const spotlightRef = useSpotlight('Click to add a comment', 'right');
+  const isSmall = useMediaQuery(LT_MEDIUM);
+  const spotlightRef = useSpotlight(
+    `Click to add${isSmall ? '\n' : ' '}a comment`,
+    isSmall ? 'bottom' : 'right'
+  );
 
   return (
     <div ref={spotlightRef} style={{ display: 'flex', width: 'max-content' }}>
@@ -20,8 +25,16 @@ function CommentInputBox({ onSubmit }) {
 
 function StoryFeedItem({ title, text, addComment }) {
   return (
-    <div style={{ padding: '1rem' }}>
-      <h1>{title}</h1>
+    <div
+      style={{
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        alignContent: 'center',
+      }}
+    >
+      <h1 style={{ textAlign: 'center' }}>{title}</h1>
       <p>{text}</p>
 
       <CommentInputBox onSubmit={addComment} />
