@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SpotlightTour, useSpotlight } from '../react-spotlight-tour';
-import { Spotlight } from '../react-spotlight-tour/spotlight';
+import Spotlight from '../react-spotlight-tour/spotlight';
 
 function CommentInputBox({ onSubmit }) {
   const [commentText, setCommentText] = useState('');

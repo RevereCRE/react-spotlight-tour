@@ -7,7 +7,7 @@ import styles from './index.module.css';
 import HomepageCodeExample from '../components/HomepageCodeExample';
 import HomepageFeatures from '../components/HomepageFeatures';
 import { SpotlightTour, useSpotlight } from '../react-spotlight-tour';
-import { Spotlight } from '../react-spotlight-tour/spotlight';
+import Spotlight from '../react-spotlight-tour/spotlight';
 import { useMediaQuery, LT_MEDIUM } from '../media_query';
 
 function HomepageHeader() {

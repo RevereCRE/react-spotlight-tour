@@ -8,7 +8,7 @@ export default function HomescreenCodeExample() {
       <CodeBlock title="Basic Usage" className="tsx">
         {`import { useState } from 'react';
 import { SpotlightTour, useSpotlight } from 'react-spotlight-tour';
-import { Spotlight } from 'react-spotlight-tour/spotlight';
+import Spotlight from 'react-spotlight-tour/spotlight';
 
 function StatusUpdateInput() {
   const spotlightRef = useSpotlight('Update your status');

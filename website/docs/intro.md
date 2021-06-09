@@ -25,8 +25,11 @@ silently breaks the tour.
 Let's start by adding a tour to a small existing app. Lines added to integrate
 React Spotlight Tour are highlighted in green.
 
-```tsx {4,7,32-36,41}
+```tsx {2-3,7,10,35-39,44}
 // feed.js
+import { SpotlightTour, useSpotlight } from 'react-spotlight-tour';
+import Spotlight from 'react-spotlight-tour/spotlight';
+
 function CommentInputBox({ onSubmit }) {
   const [commentText, setCommentText] = useState('');
   const spotlightRef = useSpotlight('Click to add a comment', 'right');

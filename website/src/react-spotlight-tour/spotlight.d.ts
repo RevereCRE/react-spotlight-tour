@@ -10,4 +10,4 @@ export interface SpotlightProps {
 }
 declare function Spotlight({ configs, onClick }: SpotlightProps): JSX.Element | null;
 declare const SpotlightMemo: React.MemoExoticComponent<typeof Spotlight>;
-export { SpotlightMemo as Spotlight };
+export default SpotlightMemo;

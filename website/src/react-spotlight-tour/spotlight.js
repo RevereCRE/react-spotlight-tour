@@ -159,4 +159,4 @@ const SpotlightMemo = memo(Spotlight, (prev, next) => {
         el.text === next.configs[i].text &&
         el.placement === next.configs[i].placement);
 });
-export { SpotlightMemo as Spotlight };
+export default SpotlightMemo;

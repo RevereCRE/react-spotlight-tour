@@ -285,4 +285,4 @@ const SpotlightMemo = memo(Spotlight, (prev, next) => {
   );
 });
 
-export { SpotlightMemo as Spotlight };
+export default SpotlightMemo;

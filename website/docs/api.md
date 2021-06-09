@@ -4,11 +4,11 @@ sidebar_position: 3
 
 # API Reference
 
-## `SpotlightTour` / `Spotlight`
+## `SpotlightTour`
 
 ```tsx
 import { SpotlightTour } from 'react-spotlight-tour';
-import { Spotlight } from 'react-spotlight-tour/spotlight';
+import Spotlight from 'react-spotlight-tour/spotlight';
 
 function Feed() {
   const [isOpen, setOpen] = useState(true);
