@@ -9,7 +9,7 @@
   <br>
   <a href="https://reverecre.github.io/react-spotlight-tour">
     Docs
-  </a>&nbsp;&nbsp;<a href="https://reverecre.github.io/react-spotlight-tour/docs/intro">
+  </a>&nbsp;&nbsp;<a href="https://reverecre.github.io/react-spotlight-tour/demo">
     Demo
   </a>&nbsp;&nbsp;<a href="https://www.npmjs.com/package/react-spotlight-tour">
     npm
